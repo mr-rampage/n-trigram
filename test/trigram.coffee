@@ -1,5 +1,5 @@
 describe 'helpers', () ->
-  fixture = namespace 'trigram.helpers'
+  fixture = namespace 'trigram'
   test = 'one two three four'
 
   it 'should extract n-words from the head of a string', () ->
@@ -17,3 +17,8 @@ describe 'helpers', () ->
   it 'should remove n-words from the tail of a string', () ->
     actual = fixture.removeWords test, 1, false
     expect(actual).toEqual 'one two three'
+
+  it 'should build a dictionary', () ->
+    expected = { 'one two' : ['three'], 'two three' : ['four'] }
+    actual = fixture.map test, 2
+    expect(actual).toEqual expected
