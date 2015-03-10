@@ -27,7 +27,7 @@
       var parts = match[0].trim().split(/\s+/);
       return parts[index];
     }
-    return null;
+    return "";
   }
 
   function randInt(maxInteger) {
