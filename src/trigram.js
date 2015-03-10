@@ -30,6 +30,10 @@
     return null;
   }
 
+  function randInt(maxInteger) {
+    return Math.floor(Math.random() * maxInteger);
+  }
+
   function createMap(input, trigramSize) {
     var map = {};
 
@@ -53,8 +57,25 @@
     return map;
   }
 
+  function generate(seed, map, maxWords) {
+    if (maxWords < 1 || seed.length === 0 || map === {}) return "";
+    var story = seed;
+    var key = "";
+    do {
+      key = extractWords(story, 2, false);
+      if (map[key]) {
+        var words = map[key];
+        var word = words[randInt(words.length)];
+        story += " " + word;
+      }
+    } while(maxWords-- && map[key]);
+
+    return story;
+  }
+
   module.extractWords = extractWords;
   module.removeWords = removeWords;
   module.map = createMap;
+  module.generate = generate;
 
 })();
