@@ -42,9 +42,9 @@
       var value = null;
 
       do {
-        value = getNthWord(input, 2, true);
+        value = getNthWord(input, trigramSize, true);
         if (value) {
-          key = extractWords(input, 2, true);
+          key = extractWords(input, trigramSize, true);
           map[key] = map[key] || [];
           if (map[key].indexOf(value) < 0) {
             map[key].push(value);
@@ -57,12 +57,12 @@
     return map;
   }
 
-  function generate(seed, map, maxWords) {
+  function generate(seed, map, trigramSize, maxWords) {
     if (maxWords < 1 || seed.length === 0 || map === {}) return "";
     var story = seed;
     var key = "";
     do {
-      key = extractWords(story, 2, false);
+      key = extractWords(story, trigramSize, false);
       if (map[key]) {
         var words = map[key];
         var word = words[randInt(words.length)];

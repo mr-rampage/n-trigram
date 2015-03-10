@@ -26,5 +26,5 @@ describe 'helpers', () ->
   it 'should generate a story', () ->
     map = { 'one two' : ['three'], 'two three' : ['four'] }
     expected = 'one two three four';
-    actual = fixture.generate 'one two', map, 100;
+    actual = fixture.generate 'one two', map, 2, 100;
     expect(actual).toEqual expected
